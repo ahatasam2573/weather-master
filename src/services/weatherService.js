@@ -25,9 +25,10 @@ const formatCurrentWeather = data => {
     return { lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, country, sunrise, sunset, speed, details, icon };
 }
 
-const getFormattedWeatherData = (searchParams) => {
-    const formattedCurrentWeather = getWeatherData('weather', searchParams).then(formatCurrentWeather)
+const getFormattedWeatherData = async (searchParams) => {
+    const formattedCurrentWeather = await getWeatherData('weather', searchParams).then(formatCurrentWeather);
+    return formattedCurrentWeather;
 }
 
 
-export default getWeatherData;
+export default getFormattedWeatherData;
