@@ -12,6 +12,7 @@ function Inputs({ setQuery, units, setUnits }) {
 
     const handleSearchClick = () => {
         if (city !== "") setQuery({ q: city });
+        setCity('');
     };
 
     const handleLocationClick = () => {

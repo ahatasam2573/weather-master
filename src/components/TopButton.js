@@ -1,37 +1,42 @@
-import React from 'react';
+import React from "react";
 
-const TopButton = () => {
+function TopButtons({ setQuery }) {
     const cities = [
         {
             id: 1,
-            title: 'London'
+            title: "Switzerland",
         },
         {
             id: 2,
-            title: 'Sydney'
+            title: "Canada",
         },
         {
             id: 3,
-            title: 'Tokyo'
+            title: "Tokyo",
         },
         {
             id: 4,
-            title: 'Toronto'
+            title: "Sylhet",
         },
         {
             id: 5,
-            title: 'Paris'
-        }
-    ]
-    return (
-        <div className='flex items-center justify-around my-6'>
-            {
-                cities.map(city => (
-                    <button key={city.id} className='text-white text-lg font-medium'>{city.title}</button>
-                ))
-            }
-        </div>
-    )
-};
+            title: "Paris",
+        },
+    ];
 
-export default TopButton;
+    return (
+        <div className="flex items-center justify-around my-6">
+            {cities.map((city) => (
+                <button
+                    key={city.id}
+                    className="text-white text-lg font-medium"
+                    onClick={() => setQuery({ q: city.title })}
+                >
+                    {city.title}
+                </button>
+            ))}
+        </div>
+    );
+}
+
+export default TopButtons;
