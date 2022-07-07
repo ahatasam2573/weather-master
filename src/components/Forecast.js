@@ -1,44 +1,47 @@
 import React from 'react';
+import { iconUrlFromCode } from '../services/weatherService';
 
-const Forecast = ({ title }) => {
+const Forecast = ({ title, items }) => {
     return (
         <div>
-            <div className='flex items-center justify-start mt-6'>
-                <p className='text-white font-medium uppercase'>{title}</p>
+            <div className="flex items-center justify-start mt-6">
+                <p className="text-white font-medium uppercase">{title}</p>
             </div>
-            <hr className='my-2' />
+            <hr className="my-2" />
 
-            <div className='flex flex-row items-center justify-between text-white'>
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='font-light text-sm'>04:30 PM</p>
-                    <img src="https://th.bing.com/th/id/R.21ca72ccb0feed3c895682e1d6863d6a?rik=%2bPN7qXcGm2oPFg&riu=http%3a%2f%2fwww.rw-designer.com%2ftaglib%2fdownload%2f6O2oYG0wQEWyZ7jWNzFpnQ.png&ehk=6opRoHBJ3W1pXnt6VXMYJ9FVuj5aLkoUdYTORXKQC5s%3d&risl=&pid=ImgRaw&r=0" className='w-6 my-1' alt="pic" />
-                    <p className='font-medium'>24°</p>
-                </div>
+            <div className="flex flex-row items-center justify-between text-white">
+                {/* this commented code is what I teach during the video
+            it has missing key and will show error in browser console
+            so use the code below
+            what I have done is just added index to loop and
+            key attribute to the div element */}
 
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='font-light text-sm'>04:30 PM</p>
-                    <img src="https://th.bing.com/th/id/R.21ca72ccb0feed3c895682e1d6863d6a?rik=%2bPN7qXcGm2oPFg&riu=http%3a%2f%2fwww.rw-designer.com%2ftaglib%2fdownload%2f6O2oYG0wQEWyZ7jWNzFpnQ.png&ehk=6opRoHBJ3W1pXnt6VXMYJ9FVuj5aLkoUdYTORXKQC5s%3d&risl=&pid=ImgRaw&r=0" className='w-6 my-1' alt="pic" />
-                    <p className='font-medium'>24°</p>
-                </div>
+                {/* {items.map((item) => (
+              <div className="flex flex-col items-center justify-center">
+                <p className="font-light text-sm">{item.title}</p>
+                <img
+                  src={iconUrlFromCode(item.icon)}
+                  className="w-12 my-1"
+                  alt=""
+                />
+                <p className="font-medium">{`${item.temp.toFixed()}°`}</p>
+              </div>
+            ))} */}
 
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='font-light text-sm'>04:30 PM</p>
-                    <img src="https://th.bing.com/th/id/R.21ca72ccb0feed3c895682e1d6863d6a?rik=%2bPN7qXcGm2oPFg&riu=http%3a%2f%2fwww.rw-designer.com%2ftaglib%2fdownload%2f6O2oYG0wQEWyZ7jWNzFpnQ.png&ehk=6opRoHBJ3W1pXnt6VXMYJ9FVuj5aLkoUdYTORXKQC5s%3d&risl=&pid=ImgRaw&r=0" className='w-6 my-1' alt="pic" />
-                    <p className='font-medium'>24°</p>
-                </div>
-
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='font-light text-sm'>04:30 PM</p>
-                    <img src="https://th.bing.com/th/id/R.21ca72ccb0feed3c895682e1d6863d6a?rik=%2bPN7qXcGm2oPFg&riu=http%3a%2f%2fwww.rw-designer.com%2ftaglib%2fdownload%2f6O2oYG0wQEWyZ7jWNzFpnQ.png&ehk=6opRoHBJ3W1pXnt6VXMYJ9FVuj5aLkoUdYTORXKQC5s%3d&risl=&pid=ImgRaw&r=0" className='w-6 my-1' alt="pic" />
-                    <p className='font-medium'>24°</p>
-                </div>
-
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='font-light text-sm'>04:30 PM</p>
-                    <img src="https://th.bing.com/th/id/R.21ca72ccb0feed3c895682e1d6863d6a?rik=%2bPN7qXcGm2oPFg&riu=http%3a%2f%2fwww.rw-designer.com%2ftaglib%2fdownload%2f6O2oYG0wQEWyZ7jWNzFpnQ.png&ehk=6opRoHBJ3W1pXnt6VXMYJ9FVuj5aLkoUdYTORXKQC5s%3d&risl=&pid=ImgRaw&r=0" className='w-6 my-1' alt="pic" />
-                    <p className='font-medium'>24°</p>
-                </div>
-
+                {items.map((item, index) => (
+                    <div
+                        key={index}
+                        className="flex flex-col items-center justify-center"
+                    >
+                        <p className="font-light text-sm">{item.title}</p>
+                        <img
+                            src={iconUrlFromCode(item.icon)}
+                            className="w-12 my-1"
+                            alt=""
+                        />
+                        <p className="font-medium">{`${item.temp.toFixed()}°`}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );
