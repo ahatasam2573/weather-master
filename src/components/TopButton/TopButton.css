@@ -1,0 +1,7 @@
+@media screen and (max-width: 767px){
+    .city-name{
+        font-size: 20px;
+        margin: auto;
+        padding: 4px;
+    }
+}

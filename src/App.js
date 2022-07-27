@@ -1,6 +1,6 @@
 import './App.css';
-import TopButton from './components/TopButton';
-import Inputs from './components/Inputs'
+import TopButton from './components/TopButton/TopButton';
+import Inputs from './components/Inputs/Inputs'
 import TimeAndLocation from './components/TimeAndLocation';
 import TemperatureAndDetails from './components/TemperatureAndDetails';
 import Forecast from './components/Forecast';
@@ -34,15 +34,15 @@ function App() {
 
   const formatBackground = () => {
     if (!weather) return "from-cyan-700 to-blue-700";
-    const threshold = units === "metric" ? 20 : 60;
-    if (weather.temp <= threshold) return "from-cyan-700 to-blue-700";
+    const threshold = units === "metric" ? 23 : 60;
+    if (weather.temp <= threshold) return "from-blue-600 to-cyan-500";
 
-    return "from-yellow-700 to-orange-700";
+    return "from-orange-700 to-red-500";
   };
 
   return (
     <div
-      className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br  h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
+      className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br rounded  h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
     >
       <TopButton setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />

@@ -15,6 +15,16 @@ function Inputs({ setQuery, units, setUnits }) {
         setCity('');
     };
 
+    const input = document.getElementById('text');
+    if (input) {
+        input.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault()
+                handleSearchClick();
+            }
+        });
+    }
+
     const handleLocationClick = () => {
         if (navigator.geolocation) {
             toast.info("Fetching users location.");
@@ -38,12 +48,13 @@ function Inputs({ setQuery, units, setUnits }) {
                     value={city}
                     onChange={(e) => setCity(e.currentTarget.value)}
                     type="text"
+                    id="text"
                     placeholder="Search for city...."
-                    className="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase"
+                    className="text text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase"
                 />
                 <UilSearch
                     size={25}
-                    className="text-white cursor-pointer transition ease-out hover:scale-125"
+                    className="text-white cursor-pointer transition ease-out hover:scale-125 search"
                     onClick={handleSearchClick}
                 />
                 <UilLocationPoint
